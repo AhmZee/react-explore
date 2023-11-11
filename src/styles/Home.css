@@ -1,0 +1,113 @@
+.Home {
+  background-image: url("../images/home/background-home-mobile.jpg");
+  width: 100%;
+  height: 100vh;
+  background-repeat: none;
+  background-size: cover;
+  text-align: center;
+}
+
+.Home h3 {
+  padding-top: 25px;
+  margin-bottom: 30px;
+  font-weight: 200;
+  padding-top: 100px;
+}
+
+.Home h1 {
+  font-family: Bellefair;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 5rem;
+  margin-bottom: 50px;
+}
+
+.Home p {
+  line-height: 25px;
+  margin-bottom: 50px;
+  max-width: 85%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.Home .explore {
+  width: 150px;
+  height: 150px;
+  background-color: #ffffff;
+  color: black;
+  font-family: Bellefair;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  margin: 0 auto;
+}
+
+/* TABLET SCREENS */
+
+@media (min-width: 640px) {
+  .Home {
+    background-image: url("../images/home/background-home-tablet.jpg");
+  }
+
+  .Home h3 {
+    font-size: 1.5rem;
+    padding-top: 150px;
+    margin-bottom: 40px;
+  }
+
+  .Home h1 {
+    font-size: 9rem;
+    margin-bottom: 40px;
+  }
+
+  .Home p {
+    margin-bottom: 60px;
+    max-width: 60%;
+  }
+
+  .Home .explore {
+    width: 220px;
+    height: 220px;
+    font-size: 2.1rem;
+  }
+}
+
+/* DESKTOP SCREENS */
+
+@media (min-width: 821px) {
+  .Home {
+    background-image: url("../images/home/background-home-desktop.jpg");
+    text-align: left;
+    padding-left: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .Home h3 {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+  }
+
+  .Home h1 {
+    font-size: 7rem;
+    margin-bottom: 40px;
+  }
+
+  .Home p {
+    margin-bottom: 60px;
+    max-width: 50%;
+    margin-right: auto;
+    margin-left: 0;
+  }
+
+  .Home .explore {
+    width: 200px;
+    height: 200px;
+    font-size: 2rem;
+    margin-right: 50px;
+    margin-top: 250px;
+  }
+}
