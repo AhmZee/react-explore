@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import '../src/styles/Destination.css';
 import moonImage from '../src/images/destination/image-moon.png';
 import marsImage from '../src/images/destination/image-mars.png';
@@ -6,7 +6,7 @@ import europaImage from '../src/images/destination/image-europa.png';
 import titanImage from '../src/images/destination/image-titan.png';
 
 const Destination = () => {
-  const destinations = [
+  const destinations = useMemo(() =>[
     {
       id: 1,
       destn: 'MOON',
@@ -39,13 +39,20 @@ const Destination = () => {
       avgDistance: '1.6 BIL. KM',
       estTravelTime: '7 YEARS'
     }
-  ];
+  ], []);
 
-  const [selectedDest, setSelectedDest] = useState(destinations[0]);
+  // Load data from local storage if available
+  const storedDestinations = JSON.parse(localStorage.getItem('destinations')) || destinations;
+  const [selectedDest, setSelectedDest] = useState(storedDestinations[0]);
 
   const handleDestinationClick = (destination) => {
     setSelectedDest(destination);
   };
+
+  // Save data to local storage when component unmounts
+  useEffect(() => {
+    localStorage.setItem('destinations', JSON.stringify(destinations));
+  }, [destinations]);
 
   return (
     <div className="Destination">

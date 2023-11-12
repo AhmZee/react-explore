@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import '../src/styles/Technology.css';
 import launchImage from '../src/images/technology/image-launch-vehicle-landscape.jpg';
 import spacePortImage from '../src/images/technology/image-spaceport-landscape.jpg';
@@ -8,7 +8,7 @@ import spacePortImage2 from '../src/images/technology/image-spaceport-portrait.j
 import spaceCapsuleImage2 from '../src/images/technology/image-space-capsule-portrait.jpg';
 
 const Technology = () => {
-  const technologies = [
+  const technologies = useMemo(() => [
     {
       id: 1,
       techType: 'LAUNCH VEHICLE',
@@ -30,13 +30,20 @@ const Technology = () => {
       imageSrc2: spaceCapsuleImage2,
       information: "A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule to reenter the Earth's atmosphere without wings. Our capsule is where you'll spend your time during the flight. It includes a space gym, cinema, and plenty of other activities to keep you entertained."
     }
-  ];
+  ],[]);
 
-  const [selectedTech, setSelectedTech] = useState(technologies[0]);
+  // Load data from local storage if available
+  const storedTechnologies = JSON.parse(localStorage.getItem('technologies')) || technologies;
+  const [selectedTech, setSelectedTech] = useState(storedTechnologies[0]);
 
   const handleTechClick = (technology) => {
     setSelectedTech(technology);
   };
+
+  // Save data to local storage when component unmounts
+  useEffect(() => {
+    localStorage.setItem('technologies', JSON.stringify(technologies));
+  }, [technologies]);
 
   return (
     <div className="Technology">
